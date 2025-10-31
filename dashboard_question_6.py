@@ -4,17 +4,17 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.express as px
 
-# --- 1️⃣ Charger les données ---
+# ---  Charger les données ---
 url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/historical_automobile_sales.csv'
 df = pd.read_csv(url)
 
-# --- 2️⃣ Nettoyage ---
+# ---  Nettoyage ---
 df = df.dropna(subset=['Year', 'Automobile_Sales', 'Vehicle_Type', 'GDP', 'unemployment_rate', 'Advertising_Expenditure'])
 
-# --- 3️⃣ Créer l'application ---
+# ---  Créer l'application ---
 app = dash.Dash(__name__)
 
-# --- 4️⃣ Mise en page ---
+# ---  Mise en page ---
 app.layout = html.Div([
     html.H1(
         "Statistiques annuelles des ventes d'automobiles",
@@ -41,7 +41,7 @@ app.layout = html.Div([
     ])
 ])
 
-# --- 5️⃣ Callbacks pour mettre à jour les graphiques ---
+# ---  Callbacks pour mettre à jour les graphiques ---
 @app.callback(
     Output('sales-graph', 'figure'),
     Output('gdp-graph', 'figure'),
@@ -85,6 +85,7 @@ def update_annual_graphs(selected_year):
 
     return fig_sales, fig_gdp, fig_unemployment, fig_ad
 
-# --- 6️⃣ Lancer l'application ---
+# ---  Lancer l'application ---
 if __name__ == '__main__':
     app.run(debug=True)
+
