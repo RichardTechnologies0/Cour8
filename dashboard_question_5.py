@@ -3,17 +3,17 @@ from dash import html, dcc
 import pandas as pd
 import plotly.express as px
 
-# --- 1️⃣ Charger les données ---
+# ---  Charger les données ---
 url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/historical_automobile_sales.csv'
 df = pd.read_csv(url)
 
-# --- 2️⃣ Filtrer uniquement la période de récession ---
+# ---  Filtrer uniquement la période de récession ---
 df_recession = df[df['Recession'] == 1]
 
-# --- 3️⃣ Créer l'application ---
+# ---  Créer l'application ---
 app = dash.Dash(__name__)
 
-# --- 4️⃣ Mise en page avec 2 lignes x 2 colonnes ---
+# ---  Mise en page avec 2 lignes x 2 colonnes ---
 app.layout = html.Div([
     html.H1(
         "Statistiques de ventes pendant les périodes de récession",
@@ -71,6 +71,7 @@ app.layout = html.Div([
     ])
 ])
 
-# --- 5️⃣ Lancer l'application ---
+# ---  Lancer l'application ---
 if __name__ == '__main__':
     app.run(debug=True)
+
